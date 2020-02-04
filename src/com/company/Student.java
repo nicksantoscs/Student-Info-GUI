@@ -2,16 +2,16 @@ package com.company;
 
 public class Student {
 
-    public String firstName, lastName;
-    public int studentNumber;
+    private String firstName, lastName;
+    private int studentNumber;
 
-    public Student(int studentNumber, String firstName, String lastName)   {
+    Student(int studentNumber, String firstName, String lastName)   {
         makeFirstName(firstName);
         makeLastName(lastName);
         makeStudentNumber(studentNumber);
     }
 
-    public void makeFirstName(String firstName)  {
+    private void makeFirstName(String firstName)  {
         this.firstName = firstName;
         //I couldn't figure out why the line beneath this wasn't working.
         //The only visible error it showed me was at toUpperCase, which I know can't be used on chars.
@@ -20,7 +20,7 @@ public class Student {
         //firstName=firstName.charAt(0).toUpperCase()+firstName.substring(1).toLowerCase();
     }
 
-    public void makeLastName(String lastName)    {
+    private void makeLastName(String lastName)    {
         this.lastName = lastName;
         //I couldn't figure out why the line beneath this wasn't working.
         //The only visible error it showed me was at toUpperCase, which I know can't be used on chars.
@@ -29,12 +29,11 @@ public class Student {
         //lastName=lastName.charAt(0).toUpperCase()+lastName.substring(1).toLowerCase();
     }
 
-    public void makeStudentNumber(int studentNumber) {
+    private void makeStudentNumber(int studentNumber) {
         this.studentNumber = studentNumber;
     }
 
     public String toString()    {
         return String.format("%s %s Student #: %d", firstName, lastName, studentNumber);
-
     }
 }
