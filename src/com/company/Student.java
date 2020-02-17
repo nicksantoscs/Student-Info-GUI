@@ -1,9 +1,10 @@
-package com.company;
+import java.awt.*;
 
 public class Student {
 
     private String firstName, lastName;
     private int studentNumber;
+    private Image picture;
 
     Student(int studentNumber, String firstName, String lastName)   {
         makeFirstName(firstName);
@@ -13,20 +14,21 @@ public class Student {
 
     private void makeFirstName(String firstName)  {
         this.firstName = firstName;
-        //I couldn't figure out why the line beneath this wasn't working.
-        //The only visible error it showed me was at toUpperCase, which I know can't be used on chars.
-        //I'll show you in class when I have the chance.
-        //Nick
-        //firstName=firstName.charAt(0).toUpperCase()+firstName.substring(1).toLowerCase();
+        try {
+        }
+        catch(Exception e) {
+            System.out.println("Only letters are allowed");
+        }
     }
 
     private void makeLastName(String lastName)    {
         this.lastName = lastName;
-        //I couldn't figure out why the line beneath this wasn't working.
-        //The only visible error it showed me was at toUpperCase, which I know can't be used on chars.
-        //I'll show you in class when I have the chance.
-        //Nick
-        //lastName=lastName.charAt(0).toUpperCase()+lastName.substring(1).toLowerCase();
+        try {
+
+        }
+        catch(Exception e) {
+
+        }
     }
 
     private void makeStudentNumber(int studentNumber) {

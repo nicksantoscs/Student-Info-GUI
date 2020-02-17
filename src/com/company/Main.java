@@ -1,5 +1,3 @@
-package com.company;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,7 +10,7 @@ public class Main extends Application {
 
     public static void main(String[] args) {
 
-        Student student = new Student(1117292,"Nicholas","Santos");
+        Student student = new Student(1117292, "Nicholas", "Santos");
         System.out.printf("%s%n", student);
         launch(args);
     }
