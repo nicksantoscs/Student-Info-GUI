@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StudentCardController">
+   <children>
+      <HBox prefHeight="219.0" prefWidth="600.0">
+         <children>
+            <ImageView fx:id="nickSantos" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets left="40.0" top="20.0" />
+               </HBox.margin>
+            </ImageView>
+            <VBox prefHeight="169.0" prefWidth="123.0">
+               <children>
+                  <Label text="First Name:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label text="Last Name:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label text="Student Number:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+               <HBox.margin>
+                  <Insets left="50.0" top="50.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox prefHeight="219.0" prefWidth="95.0">
+               <children>
+                  <Label fx:id="firstName" text="Label">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lastName" text="Label">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="studentNumber" text="Label">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+               <HBox.margin>
+                  <Insets left="70.0" top="50.0" />
+               </HBox.margin>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox layoutX="-2.0" layoutY="219.0" prefHeight="169.0" prefWidth="600.0">
+         <children>
+            <Label text="Favourite Activities:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
+            </Label>
+            <TextArea fx:id="activityList" prefHeight="100.0" prefWidth="200.0">
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+            </TextArea>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
