@@ -68,6 +68,10 @@ public class CreateStudentController extends Application {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select Image");
 
+        //This filters the directory to search for .png and .jpg
+        FileChooser.ExtensionFilter imgFilter = new FileChooser.ExtensionFilter("Image Files", "*.jpg","*.png");
+        fileChooser.getExtensionFilters().addAll(imgFilter);
+
         //Set the start directory to the Pictures folder
         String userDirectoryString = System.getProperty("user.home") + "\\Pictures";
         File userDirectory = new File(userDirectoryString);
