@@ -2,10 +2,7 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -13,6 +10,8 @@ import javafx.scene.image.ImageView;
 
 import java.awt.image.ImageFilter;
 import java.io.File;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 public class CreateStudentController extends Application {
@@ -34,6 +33,8 @@ public class CreateStudentController extends Application {
     @FXML
     private Label studentNumberLabel;
     @FXML
+    private Label ageLabel;
+    @FXML
     private Button submitButton;
     @FXML
     private CheckBox activityOne;
@@ -53,6 +54,8 @@ public class CreateStudentController extends Application {
     private CheckBox activityEight;
     @FXML
     private ImageView imageView;
+    @FXML
+    private DatePicker datePicker;
 
     @Override
     public void start(Stage primaryStage) {
@@ -69,7 +72,7 @@ public class CreateStudentController extends Application {
         fileChooser.setTitle("Select Image");
 
         //This filters the directory to search for .png and .jpg
-        FileChooser.ExtensionFilter imgFilter = new FileChooser.ExtensionFilter("Image Files", "*.jpg","*.png");
+        FileChooser.ExtensionFilter imgFilter = new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.png");
         fileChooser.getExtensionFilters().addAll(imgFilter);
 
         //Set the start directory to the Pictures folder
@@ -88,6 +91,26 @@ public class CreateStudentController extends Application {
         if (imageFile != null && imageFile.isFile()) {
             imageView.setImage(new Image(imageFile.toURI().toString()));
         }
+    }
+
+    /**
+     * This method takes the current date and calculates the user's age.
+     * @param event
+     * @throws Exception
+     */
+
+    public void updateAge(ActionEvent event) throws Exception {
+        //Gets the current date
+        LocalDate currentDate = LocalDate.now();
+
+        //Getting the date entered
+        LocalDate enteredDate = datePicker.getValue();
+
+        //Calculating the age
+        int age = (int) ChronoUnit.YEARS.between(enteredDate, currentDate);
+
+        //Updating the age label
+        ageLabel.setText("Age: " + age);
     }
 
     public void submitClick() {
