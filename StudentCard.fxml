@@ -1,94 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="StudentCardController">
+<AnchorPane prefHeight="343.0" prefWidth="598.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StudentCardController">
     <children>
-        <HBox prefHeight="219.0" prefWidth="600.0">
+        <HBox layoutX="310.0" layoutY="172.0" prefHeight="90.0" prefWidth="256.0">
             <children>
-                <ImageView fx:id="nickSantos" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
-                           preserveRatio="true">
+                <Label prefHeight="22.0" prefWidth="271.0" text="Favourite Activities:">
                     <HBox.margin>
-                        <Insets left="40.0" top="20.0"/>
-                    </HBox.margin>
-                </ImageView>
-                <VBox prefHeight="169.0" prefWidth="123.0">
-                    <children>
-                        <Label text="First Name:">
-                            <font>
-                                <Font size="15.0"/>
-                            </font>
-                        </Label>
-                        <Label text="Last Name:">
-                            <font>
-                                <Font size="15.0"/>
-                            </font>
-                        </Label>
-                        <Label text="Student Number:">
-                            <font>
-                                <Font size="15.0"/>
-                            </font>
-                        </Label>
-                    </children>
-                    <HBox.margin>
-                        <Insets left="50.0" top="50.0"/>
-                    </HBox.margin>
-                </VBox>
-                <VBox prefHeight="219.0" prefWidth="95.0">
-                    <children>
-                        <Label fx:id="firstName" text="Label">
-                            <font>
-                                <Font size="15.0"/>
-                            </font>
-                        </Label>
-                        <Label fx:id="lastName" text="Label">
-                            <font>
-                                <Font size="15.0"/>
-                            </font>
-                            <VBox.margin>
-                                <Insets/>
-                            </VBox.margin>
-                        </Label>
-                        <Label fx:id="studentNumber" text="Label">
-                            <VBox.margin>
-                                <Insets/>
-                            </VBox.margin>
-                            <font>
-                                <Font size="15.0"/>
-                            </font>
-                        </Label>
-                    </children>
-                    <HBox.margin>
-                        <Insets left="70.0" top="50.0"/>
-                    </HBox.margin>
-                </VBox>
-            </children>
-        </HBox>
-        <HBox layoutX="-2.0" layoutY="219.0" prefHeight="169.0" prefWidth="600.0">
-            <children>
-                <Label text="Favourite Activities:">
-                    <font>
-                        <Font size="15.0"/>
-                    </font>
-                    <HBox.margin>
-                        <Insets left="15.0"/>
+                        <Insets />
                     </HBox.margin>
                 </Label>
-                <TextArea fx:id="activityList" prefHeight="100.0" prefWidth="200.0">
+                <TextArea fx:id="activityList" prefHeight="89.0" prefWidth="279.0">
                     <HBox.margin>
-                        <Insets left="30.0"/>
+                        <Insets />
                     </HBox.margin>
                 </TextArea>
             </children>
         </HBox>
+      <Label layoutX="207.0" layoutY="14.0" text="Student Card">
+         <font>
+            <Font name="System Bold Italic" size="30.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="0.33206110510207315" endY="1.0" startX="0.3206106724629875">
+               <stops>
+                  <Stop color="#002fff" />
+                  <Stop color="#002fff" offset="0.06506849315068493" />
+                  <Stop color="RED" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <ListView fx:id="listView" layoutX="14.0" layoutY="176.0" onMouseClicked="#changeStudentFromList" prefHeight="82.0" prefWidth="246.0" />
+      <ImageView fx:id="imageView" fitHeight="112.0" fitWidth="154.0" layoutX="60.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" />
+      <VBox layoutX="293.0" layoutY="49.0" prefHeight="120.0" prefWidth="132.0">
+         <children>
+            <Label text="First Name:" />
+            <Label text="Last Name:" />
+            <Label text="Student Number:" />
+            <Label text="Birthday:" />
+            <Label text="Age:" />
+         </children>
+      </VBox>
+      <VBox layoutX="423.0" layoutY="49.0" prefHeight="120.0" prefWidth="124.0">
+         <children>
+            <Label fx:id="firstNameLabel" />
+            <Label fx:id="lastNameLabel" />
+            <Label fx:id="studentNumberLabel" />
+            <Label fx:id="birthdayLabel" />
+            <Label fx:id="ageLabel" />
+         </children>
+      </VBox>
+      <Button fx:id="backButton" layoutX="273.0" layoutY="288.0" mnemonicParsing="false" onAction="#backToStudent" text="Back" />
     </children>
 </AnchorPane>

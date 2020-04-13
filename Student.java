@@ -1,6 +1,7 @@
 import javafx.scene.image.Image;
 
-import javax.swing.*;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 
 public class Student {
@@ -8,16 +9,18 @@ public class Student {
     private String firstName, lastName;
     private int studentNumber;
     private Image image;
-    private ArrayList<String>activities;
+    private ArrayList<String> activities;
+    private LocalDate birthday;
+    private int age;
 
 
-    Student(int studentNumber, String firstName, String lastName, ArrayList<String>activities) {
+    Student(int studentNumber, String firstName, String lastName, ArrayList<String> activities, LocalDate birthday, Image image) {
         setFirstName(firstName);
         setLastName(lastName);
         setStudentNumber(studentNumber);
+        setBirthday(birthday);
         setActivities(activities);
-        image = new Image("./image/nicksantos.jpg") {
-        };
+        setImage(image);
     }
 
     public String getFirstName() {
@@ -36,6 +39,10 @@ public class Student {
         return image;
     }
 
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
     private void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -49,6 +56,22 @@ public class Student {
 
     }
 
+    public LocalDate getBirthday() {
+        return birthday;
+    }
+
+    public int getAge() {
+        return Period.between(birthday, LocalDate.now()).getYears();
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setBirthday(LocalDate birthday) {
+        this.birthday = birthday;
+    }
+
     public ArrayList<String> getActivities() {
         return activities;
     }
@@ -58,7 +81,7 @@ public class Student {
     }
 
     public String toString() {
-        return String.format("%s %s Student #: %d, favourite activities: %s", firstName, lastName, studentNumber, this.activities.toString());
+        return String.format("%s %s with student #: %d has favourite activities: %s", firstName, lastName, studentNumber, this.activities.toString());
     }
 
 }

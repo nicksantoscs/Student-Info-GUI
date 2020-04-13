@@ -1,24 +1,29 @@
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.image.ImageView;
 
-import java.awt.image.ImageFilter;
 import java.io.File;
+import java.io.IOError;
+import java.io.IOException;
+import java.net.URL;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-public class CreateStudentController extends Application {
+public class CreateStudentController implements Initializable {
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+    private Student student1;
 
     @FXML
     public TextField firstNameTextField;
@@ -56,13 +61,13 @@ public class CreateStudentController extends Application {
     private ImageView imageView;
     @FXML
     private DatePicker datePicker;
-
-    @Override
-    public void start(Stage primaryStage) {
-    }
+    @FXML
+    private ListView listView;
+    static int studentNumber = 1111111;
 
     /**
      * This method launches a FileChooser object so that the user selects a new image.
+     *
      * @param event
      */
     public void imageButtonPushed(ActionEvent event) {
@@ -95,6 +100,7 @@ public class CreateStudentController extends Application {
 
     /**
      * This method takes the current date and calculates the user's age.
+     *
      * @param event
      * @throws Exception
      */
@@ -113,7 +119,13 @@ public class CreateStudentController extends Application {
         ageLabel.setText("Age: " + age);
     }
 
-    public void submitClick() {
+    /**
+     * This method checks to make sure there are activities selected before submitting it to
+     * the detailed student view
+     * @param event
+     * @throws IOException
+     */
+    public void submitClick(ActionEvent event) throws IOException {
         ArrayList<String> activities = new ArrayList<String>();
         if (activityOne.isSelected()) {
             activities.add(activityOne.getText());
@@ -143,8 +155,40 @@ public class CreateStudentController extends Application {
             throw new IllegalArgumentException("Please select an activity");
         } else {
             int studentNum = Integer.parseInt(studentNumberTextField.getText());
-            Student student1 = new Student(studentNum, firstNameTextField.getText(), lastNameTextField.getText(), activities);
+
+            student1 = new Student(studentNumber, firstNameTextField.getText(), lastNameTextField.getText(), activities, datePicker.getValue(), imageView.getImage());
+            studentNumber += 1;
+            Main.getStudents().add(student1);
             System.out.println(student1.toString());
+            changeSceneToDetailedStudentView(event);
         }
     }
+
+    /**
+     * When this method is called, it will pass the selected Student object to
+     * a detailed view
+     */
+    public void changeSceneToDetailedStudentView(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation((getClass().getResource("StudentCard.fxml")));
+        Parent listViewParent = loader.load();
+
+        Scene listViewScene = new Scene(listViewParent);
+
+        //Access the controller and call a method
+        StudentCardController controller = loader.getController();
+        controller.selectStudent(student1);
+
+        //This line gets the stage information
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        window.setScene(listViewScene);
+        window.show();
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        studentNumberTextField.setText(studentNumber + "");
+    }
 }
+

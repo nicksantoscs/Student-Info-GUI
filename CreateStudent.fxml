@@ -19,7 +19,7 @@
             <children>
                 <TextField fx:id="firstNameTextField" promptText="Walter" />
                 <TextField fx:id="lastNameTextField" promptText="McWalterson" />
-                <TextField fx:id="studentNumberTextField" prefHeight="26.0" prefWidth="126.0" promptText="xxxxxxx" />
+                <TextField fx:id="studentNumberTextField" editable="false" prefHeight="26.0" prefWidth="126.0" promptText="xxxxxxx" />
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <DatePicker fx:id="datePicker" onAction="#updateAge" promptText="YYYY-MM-DD" />
@@ -32,7 +32,7 @@
             <children>
                 <Label fx:id="firstNameLabel" text="Add First Name:" />
                 <Label fx:id="lastNameLabel" text="Add Last Name:" />
-                <Label fx:id="studentNumberLabel" text="Add Student Number:" />
+                <Label fx:id="studentNumberLabel" text="Student Number:" />
             <Label fx:id="birthdayLabel" layoutX="10.0" layoutY="85.0" text="Birthday:">
                <VBox.margin>
                   <Insets />

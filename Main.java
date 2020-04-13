@@ -9,16 +9,21 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.util.ArrayList;
 
 import static javafx.application.Application.launch;
 
 public class Main extends Application {
 
-    public static void main(String[] args) {
+    private static ArrayList<Student> students;
 
-        //Student student = new Student(1117292, "Nicholas", "Santos");
-        //System.out.printf("%s%n", student);
+    public static void main(String[] args) {
+        students = new ArrayList<>();
         launch(args);
+    }
+
+    public static ArrayList<Student> getStudents() {
+        return students;
     }
 
     @Override
